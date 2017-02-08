@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+/**
+ * main - function that prints out byte size of data types
+ * Return: byte sizes
+ */
 int main(void)
 {
 	char charSize;
