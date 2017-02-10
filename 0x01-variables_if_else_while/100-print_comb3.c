@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - prints numbers 0-99 with two digits, but disallows double digits, and pairs that were already printed
+ * main - prints 0-99,disallows double digits,& pairs already printed
  * Return: 0
  */
 int main(void)
@@ -20,8 +20,8 @@ int main(void)
 		++num2;
 		if (num2 > '9')
 		{
-			num2 = p; /*placed '2' into variable p, to rep increase in num print which disallows duplicate pair*/
-			++num1;
+			num2 = p; /*placed '2' into variable p, to rep increase*/
+			++num1;   /*in num print which disallows duplicate pair*/
 			++p;
 		}
 		if (num1 == num2)
