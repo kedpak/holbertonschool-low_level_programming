@@ -1,20 +1,19 @@
 #include <stdio.h>
 
-
-
-
-
+/**
+ * main - print numbers with 3 digits
+ * Return: 0
+ */
 int main(void)
 {
-        int i, j, k;
+	int i, j, k;
 
 	i = 0;
-
 	while (i <= 9)
-        {
-                j = i + 1;
-                while (j <= 9)
-                {
+	{
+		j = i + 1;
+		while (j <= 9)
+		{
 			k = j + 1;
 			while (k <= 9)
 			{
@@ -35,9 +34,8 @@ int main(void)
 			j++;
 
 		}
-
-                i++;
+		i++;
 	}
-        putchar('\n');
+	putchar('\n');
 	return (0);
 }
