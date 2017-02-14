@@ -2,6 +2,7 @@
 
 /**
  * print_last_digit - prints last digit
+ * @n: input integer
  * Return: remainder
  */
 int print_last_digit(int n)
