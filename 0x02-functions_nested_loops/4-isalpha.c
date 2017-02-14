@@ -2,6 +2,7 @@
 
 /**
  * _islower - returns 1 if character is lowercase, 0 if not
+ * @c: integer input
  * Return: 1 if lowercase, 0 if not
  */
 int _isalpha(int c)
