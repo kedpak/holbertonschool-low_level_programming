@@ -2,6 +2,7 @@
 
 /**
  * _abs - finds absolute value of int
+ * @c: input integer
  * Return: absolute value of in
  */
 int _abs(int c)
