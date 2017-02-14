@@ -1,5 +1,9 @@
 #include "holberton.h"
 
+/**
+ * _abs - finds absolute value of int
+ * Return: absolute value of in
+ */
 int _abs(int c)
 {
 	if (c > 0)
