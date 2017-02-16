@@ -6,7 +6,7 @@
  */
 int main(void)
 {
-	int i, n, k;
+	long int i, n, k;
 
 	n = 1;
 	k = 2;
@@ -14,13 +14,13 @@ int main(void)
 	{
 		if (i < 49)
 		{
-			printf("%d, ", n);
-			printf("%d, ", k);
+			printf("%li, ", n);
+			printf("%li, ", k);
 		}
 		if (i == 49)
 		{
-			printf("%d", n);
-			printf("%d", k);
+			printf("%li", n);
+			printf("%li", k);
 		}
 		n = n + k;
 		k = n + k;
