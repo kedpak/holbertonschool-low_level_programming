@@ -6,21 +6,23 @@
  */
 int main(void)
 {
-	long int i, n, k;
+	long i, n, k;
 
 	n = 1;
 	k = 2;
-	for (i = 0; i < 50; i++)
+	for (i = 0; i < 25; i++)
 	{
-		if (i < 49)
+		if (i < 25)
 		{
 			printf("%li, ", n);
-			printf("%li, ", k);
-		}
-		if (i == 49)
-		{
-			printf("%li", n);
-			printf("%li", k);
+			if (i < 24)
+			{
+				printf("%li, ", k);
+			}
+			if (i < 25 && i > 23)
+			{
+				printf("%li", k);
+			}
 		}
 		n = n + k;
 		k = n + k;
