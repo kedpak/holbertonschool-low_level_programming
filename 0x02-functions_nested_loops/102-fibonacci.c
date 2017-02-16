@@ -10,14 +10,14 @@ int main(void)
 
 	n = 1;
 	k = 2;
-	for (i = 0; i <= 50; i++)
+	for (i = 0; i < 50; i++)
 	{
-		if (i < 50)
+		if (i < 49)
 		{
 			printf("%d, ", n);
 			printf("%d, ", k);
 		}
-		if (i == 50)
+		if (i == 49)
 		{
 			printf("%d", n);
 			printf("%d", k);
