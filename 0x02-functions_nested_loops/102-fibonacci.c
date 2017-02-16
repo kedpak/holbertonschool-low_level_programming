@@ -14,13 +14,13 @@ int main(void)
 	{
 		if (i < 50)
 		{
-			printf("%d ,\n", n);
-			printf("%d ,\n", k);
+			printf("%d, ", n);
+			printf("%d, ", k);
 		}
 		if (i == 50)
 		{
-			printf("%d\n", n);
-			printf("%d\n", k);
+			printf("%d", n);
+			printf("%d", k);
 		}
 		n = n + k;
 		k = n + k;
