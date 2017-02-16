@@ -1,15 +1,19 @@
 #include <stdio.h>
 
+/**
+ * main - print sum of fibonacci numbers divisible by 2
+ * Return: 0
+ */
 int main(void)
 {
-	long i, n, k, m, l;
+	long i, n, k, m, l, t;
 
 	n = 1;
 	k = 2;
-	for(i = 0; i < 16; i++)
+	m = 0;
+	l = 0;
+	for (i = 0; i < 16; i++)
 	{
-	
-	
 		if (n % 2 == 0)
 		{
 			m = n;
@@ -18,11 +22,13 @@ int main(void)
 		{
 			l = k;
 		}
-		
-		n = n +k;
-		k = n +k;
+		n = n + k;
+		k = n + k;
+		t = t +  m + l;
+		m = 0;
+		l = 0;
 	}
-	printf("%li", m + l);
+	printf("%li", t);
 	putchar('\n');
 	return (0);
 }
