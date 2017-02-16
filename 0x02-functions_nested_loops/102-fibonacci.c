@@ -12,8 +12,16 @@ int main(void)
 	k = 2;
 	for (i = 0; i <= 50; i++)
 	{
-		printf("%d ,", n);
-		printf("%d ,", k);
+		if (i < 50)
+		{
+			printf("%d ,", n);
+			printf("%d ,", k);
+		}
+		if (i == 50)
+		{
+			printf("%d", n);
+			printf("%d", k);
+		}
 		n = n + k;
 		k = n + k;
 	}
