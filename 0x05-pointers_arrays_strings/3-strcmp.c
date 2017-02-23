@@ -17,15 +17,16 @@ int _strcmp(char *s1, char *s2)
 		if (*s1 == *s2)
 		{
 			num = 0;
-			break;
 		}
 		else if (*s1 > *s2)
 		{
 			num = *s1 - *s2;
+			break;
 		}
 		else if (*s1 < *s2)
 		{
 			num = *s1 - *s2;
+			break;
 		}
 		i++;
 		j++;
