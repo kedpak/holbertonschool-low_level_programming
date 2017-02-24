@@ -8,8 +8,8 @@
 char *leet(char *s)
 {
 	int i, j;
-	char lower[5] = {'a', 'e', 'o', 't', 'l'};
-	char numbers[5] = {'4', '3', '0', '7', '1'};	
+	char lower[] = "aeotl";
+	char numbers[] = "43071";
 
 	j = 0;
 	for (i = 0; s[i] != '\0'; i++)
