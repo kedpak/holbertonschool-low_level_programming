@@ -2,8 +2,8 @@
 
 /**
  * rot13 - switches strings with rot13
- * @ch: input characters
- * Return: ch
+ * @s: input characters
+ * Return: s
  */
 char *rot13(char *s)
 {
