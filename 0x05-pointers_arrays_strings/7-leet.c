@@ -9,11 +9,11 @@ char *leet(char *s)
 {
 	int i, j;
 	char lower[5] = {'a', 'e', 'o', 't', 'l'};
-	char upper[5] = {'4', '3', '0', '7', '1'};
+	char numbers[5] = {'4', '3', '0', '7', '1'};
 	char *u;
 	char *l;
 
-	u = upper;
+	u = numbers;
 	l = lower;
 	j = 0;
 	for (i = 0; s[i] != '\0'; i++)
