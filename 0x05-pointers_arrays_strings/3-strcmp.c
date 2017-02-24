@@ -22,9 +22,9 @@ int _strcmp(char *s1, char *s2)
 		else
 		{
 			num = *s1 - *s2;
+			i++;
+			j++;
 		}
-		i++;
-		j++;
 	}
 	return (num);
 
