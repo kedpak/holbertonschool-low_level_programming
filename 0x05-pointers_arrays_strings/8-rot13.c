@@ -5,20 +5,20 @@
  * @ch: input characters
  * Return: ch
  */
-char *rot13(char *ch)
+char *rot13(char *s)
 {
 	int i;
 
-	for (i = 0; ch[i] != '\0'; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		if ((ch[i] >= 'A' && ch[i] <= 'M') || (ch[i] >= 'a' && ch[i] <= 'm'))
+		if ((s[i] >= 'A' && s[i] <= 'M') || (s[i] >= 'a' && s[i] <= 'm'))
 		{
-			ch[i] += 13;
+			s[i] += 13;
 		}
-		else if ((ch[i] >= 'N' && ch[i] <= 'Z') || (ch[i] >= 'n' && ch[i] <= 'z'))
+		else if ((s[i] >= 'N' && s[i] <= 'Z') || (s[i] >= 'n' && s[i] <= 'z'))
 		{
-			ch[i] -= 13;
+			s[i] -= 13;
 		}
 	}
-	return (ch);
+	return (s);
 }
