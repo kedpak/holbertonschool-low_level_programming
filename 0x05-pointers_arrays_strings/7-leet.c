@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * *leet - replace some letters with numbers
+ * leet - replace some letters with numbers
  * @s: input string
  * Return: string
  */
