@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * *string_touppe - converts lower case into upper case
+ * *string_toupper - converts lower case into upper case
  * @str: string
  * Return: string in uppercase
  */
