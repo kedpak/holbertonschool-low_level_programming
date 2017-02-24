@@ -20,11 +20,9 @@ char *leet(char *s)
 	{
 		while (j < 5)
 		{
-
 			if (*(s + i) == l[j] || *(s + i) == l[j] - 32)
 			{
 				*(s + i) = u[j];
-				break;
 			}
 			j++;
 		}
