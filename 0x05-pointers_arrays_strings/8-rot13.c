@@ -7,27 +7,18 @@
  */
 char *rot13(char *s)
 {
-	int i, j;
-	char a[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char b[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-	char *hey;
-	char *me;
+	int i;
 
-	hey = a;
-	me = b;
-	j = 0;
 	for (i = 0; s[i] != '\0'; i++)
 	{
-		while (j < 52)
+		if ((s[i] >= 'A' && s[i] <= 'M') || (s[i] >= 'a' && s[i] <= 'm'))
 		{
-			if (*(s + i) == hey[j])
-			{
-				*(s + i) = me[j];
-				break;
-			}
-			j++;
+			s[i] += 13;
 		}
-		j = 0;
+		else if ((s[i] >= 'N' && s[i] <= 'Z') || (s[i] >= 'n' && s[i] <= 'z'))
+		{
+			s[i] -= 13;
+		}
 	}
 	return (s);
 }
