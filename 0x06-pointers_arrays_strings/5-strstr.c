@@ -28,18 +28,14 @@ char *_strstr(char *haystack, char *needle)
 			}
 			j++;
 		}
+		
 		j = 0;
 		i++;
-	}
-	if (haystack[j] == needle[i])
-	{
-		while (haystack[j] + n == needle[i] + n && haystack[j] != '\0')
+		if (haystack[j] + n != needle[i] + n)
 		{
-			haystack = needle + n;
-			n++;
+			return (haystack);
 		}
-		return (haystack);
 	}
-
+	
 	return (haystack);
 }
