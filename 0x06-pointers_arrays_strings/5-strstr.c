@@ -1,5 +1,5 @@
 #include "holberton.h"
-
+#include <stdlib.h>
 /**
  * _strstr - finds substring within string
  * @haystack: string to search in
@@ -8,29 +8,22 @@
  */
 char *_strstr(char *haystack, char *needle)
 {
-	int i, j, n;
+	int i;
 
-	i = 0;
-	j = 0;
-	n = 0;
-	while (needle[i] != '\0')
+	while (*haystack != '\0')
 	{
-		while (haystack[j] != '\0')
+		for (i = 0; haystack[i] == needle[i] && haystack[i] != '\0'; i++)
 		{
-			if (haystack[j] == needle[i])
-			{
-				while (haystack[j] + n == needle[i] + n && haystack[j] != '\0')
-				{
-					haystack = needle + n;
-					n++;
-				}
-				return (haystack);
-			}
-			j++;
+			;
 		}
-		j = 0;
-		i++;
+		if (needle[i] == '\0')
+		{
+			return (haystack);
+		}
 
+		haystack++;
 	}
-	return (haystack);
+	return (NULL);
 }
+
+
