@@ -7,15 +7,14 @@
  */
 int is_palindrome(char *s)
 {
-	if (check(s, s[0], s[length(s) - 1]) == 1 || s == '\0')
-	{
-		return (0);
-	}
-	else
+	if (check(s, s[0], s[length(s) - 1]) == 1)
 	{
 		return (1);
 	}
+	else
+	{
 		return (0);
+	}
 }
 
 /**
@@ -25,13 +24,17 @@ int is_palindrome(char *s)
  * @end: end of string
  * Return: result
  */
-int check(char *string, char start, char end)
+int check(char *string, int start, int end)
 {
-	if (string[start / 2] == string[end / 2])
+	if (start == end && length(string) / 2 > start)
 	{
 		return (check(string, start + 1, end - 1));
 	}
-	else if (string[(start / 2) + 1] == string[(end / 2) - 1])
+	else if (start != end)
+	{
+		return (0);
+	}
+	else if (string[start] == string[end] && length(string) / 2 < start)
 	{
 		return (1);
 	}
