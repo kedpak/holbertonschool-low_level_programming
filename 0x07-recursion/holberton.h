@@ -9,5 +9,5 @@ int is_prime_number(int n);
 int counter(int i, int k);
 int prime(int num, int i);
 int is_palindrome(char *s);
-int check(char *string, int start, int end);
+char check(char *string, int start, int end);
 int length(char *c);
