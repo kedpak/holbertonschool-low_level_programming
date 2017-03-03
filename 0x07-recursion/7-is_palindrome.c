@@ -1,4 +1,5 @@
 #include "holberton.h"
+#include <stdio.h>
 
 /**
  * is_palindrome - checks if string is palindrome
@@ -7,14 +8,9 @@
  */
 int is_palindrome(char *s)
 {
-	if (check(s, s[0], s[length(s) - 1]) == 1 || *s == '\0')
-	{
-		return (1);
-	}
-	else
-	{
-		return (0);
-	}
+	int len = length(s);
+
+	return (check(s, 0, len));
 }
 
 /**
@@ -24,21 +20,17 @@ int is_palindrome(char *s)
  * @end: end of string
  * Return: result
  */
-int check(char *string, int start, int end)
+char check(char *string, int start, int end)
 {
-	if (start == end && length(string) / 2 > start)
-	{
-		return (check(string, start + 1, end - 1));
-	}
-	else if (start != end)
-	{
-		return (0);
-	}
-	else if (string[start] == string[end] && length(string) / 2 < start)
+	if (start > end)
 	{
 		return (1);
 	}
-	return (0);
+	if (string[start] != string[end - 1])
+	{
+		return (0);
+	}
+	return (check(string, start + 1, end - 1));
 }
 
 /**
