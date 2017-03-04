@@ -1,0 +1,1 @@
+This section is about static libraries and how to create them using commands. 
