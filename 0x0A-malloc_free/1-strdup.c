@@ -31,6 +31,11 @@ char *_strdup(char *str)
 	return (m);
 }
 
+/**
+ * _strlen - gets length of string
+ * @s: input string
+ * Return: string
+ */
 int _strlen(char *s)
 {
 	int m;
