@@ -3,39 +3,50 @@
 #include <stdlib.h>
 
 /**
- * str_concast - concatanate two strings and allocate into new memory
+ * str_concat - concatanate two strings and allocate into new memory
  * @s1: destination string
  * @s2: string to be appended
  * Return: string concatnated
  */
 char *str_concat(char *s1, char *s2)
 {
-	int i, j, k;
+	int i, j, k, slen, s2len;
 	char *m;
 
-	i = 0;
-	j = 0;
-	k = 0;
-	m = malloc(sizeof(char) * (_strlen(s1) + _strlen(s2) + 1));
+	i = 0; k = 0; j = 0;
+	slen = _strlen(s1);
+	s2len = _strlen(s2);
 	if (s1 == NULL)
 	{
-		s1 = "";
+		slen = 0;
 	}
 	if (s2 == NULL)
 	{
-		s2 = "";
+		s2len = 0;
 	}
-	while (s1[i] != '\0')
+	m = malloc(sizeof(char) * (slen + s2len + 1));
+	if (m == NULL)
 	{
-		m[k] = s1[i];
-		i++;
-		k++;
+		free(m);
+		return (NULL);
 	}
-	while (s2[j] != '\0')
+	if (slen != 0)
 	{
-		m[k] = s2[j];
-		j++;
-		k++;
+		while (s1[i] != '\0')
+		{
+			m[k] = s1[i];
+			i++;
+			k++;
+		}
+	}
+	if (s2len != 0)
+	{
+		while (s2[j] != '\0')
+		{
+			m[k] = s2[j];
+			j++;
+			k++;
+		}
 	}
 	m[k] = '\0';
 	return (m);
