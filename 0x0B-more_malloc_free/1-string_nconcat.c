@@ -30,22 +30,28 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		len = 0;
 	}
-	while (s1[i] != '\0')
+	if (len2 != 0)
 	{
-		a[k] = s1[i]; i++; k++;
-	}
-	if (n < len)
-	{
-		while (j < n)
-		{
-			a[k] = s2[j]; j++; k++;
-		}
-	}
-	else
-	{
-		while (s2[j] != '\0')
+		while (s1[i] != '\0')
 		{
 			a[k] = s1[i]; i++; k++;
+		}
+	}
+	if (len != 0)
+	{
+		if (n < len)
+		{
+			while (j < n)
+			{
+				a[k] = s2[j]; j++; k++;
+			}
+		}
+		else
+		{
+			while (s2[j] != '\0')
+			{
+				a[k] = s1[i]; i++; k++;
+			}
 		}
 	}
 	a[k] = '\0';
