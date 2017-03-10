@@ -13,6 +13,10 @@ char *argstostr(int ac, char **av)
 	unsigned int bytes;
 	char *s;
 
+	if (ac == 0 || av == NULL)
+	{
+		return (NULL);
+	}
 	bytes = total_len(ac, av);
 	s = malloc(bytes);
 	if (s == NULL)
@@ -42,7 +46,7 @@ unsigned int total_len(int ac, char **av)
 		i++;
 	}
 	n = ac + 1 + p;
-	n = n + sizeof(char);
+	n = n * sizeof(char);
 	return (n);
 }
 
