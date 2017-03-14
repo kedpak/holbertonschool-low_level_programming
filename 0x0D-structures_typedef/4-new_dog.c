@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "dog.h"
+#include <unistd.h>
 
 /**
  * new_dog - creates a new dog struct
@@ -12,7 +13,6 @@
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *newdog;
-	unsigned int i, j;
 
 	newdog = malloc(sizeof(dog_t));
 
@@ -20,31 +20,21 @@ dog_t *new_dog(char *name, float age, char *owner)
 	{
 		return (NULL);
 	}
-	newdog->name = malloc(sizeof(char) * strlen(name) + 1);
+	newdog->name = malloc(sizeof(char) * _strlen(name));
 	if (newdog->name == NULL)
 	{
 		free(newdog);
 		return (NULL);
 	}
-	i = 0;
-	while (newdog->name[i] != '\0')
-	{
-		newdog->name[i] = name[i];
-		i++;
-	}
-	newdog->owner = malloc(sizeof(char) * strlen(owner) + 1);
+	_strcpy(newdog->name, name);
+	newdog->owner = malloc(sizeof(char) * _strlen(owner));
 	if (newdog->owner == NULL)
 	{
 		free(newdog->name);
 		free(newdog);
 		return (NULL);
 	}
-	j = 0;
-	while (owner[j] != '\0')
-	{
-		newdog->owner[j] = owner[j];
-		j++;
-	}
+	_strcpy(newdog->owner, owner);
 	newdog->age = age;
 	return (newdog);
 }
@@ -64,4 +54,35 @@ int _strlen(char *s)
 		m++;
 	}
 	return (m);
+}
+
+/**
+ * _strcpy - copy string from source to dest
+ * @dest: destination string
+ * @src: src string
+ * Return: string
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+
+	return (dest);
+	_putchar('\n');
+}
+
+/**
+ * _putchar - print characters
+ * @c: character input
+ * Return: characters to pring
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }
