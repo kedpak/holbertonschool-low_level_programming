@@ -2,8 +2,8 @@
 ## Synopsis
 This project will go over the argc and argv agruments in the main function. 
 ## Description
-argc and argv are the only arguments that are ever passed through the main function. It is utilized when there are arguments\
-passed through the command line. argc represents the number of arguments that will be passed, while argv is the array\
+argc and argv are the only arguments that are ever passed through the main function. It is utilized when there are arguments \
+passed through the command line. argc represents the number of arguments that will be passed, while argv is the array \
 of arguments. Typically argv is a one-dimensional array of strings.
 ## Examples
 `int main(int argc, char *argv[])`\
