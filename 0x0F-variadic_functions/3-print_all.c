@@ -1,7 +1,4 @@
 #include "variadic_functions.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
 
 /**
  * print_all - print out integer, float, char, or string
@@ -13,7 +10,7 @@ void print_all(const char * const format, ...)
 	int i, k; va_list ap; char *str;
 
 	i = 0;
-	while (format[i] != '\0' && format)
+	while (format[i] != '\0' && format != NULL)
 	{
 		va_start(ap, format);
 		while (format[i])
