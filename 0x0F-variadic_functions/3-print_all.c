@@ -12,41 +12,44 @@ void print_all(const char * const format, ...)
 {
 	int i, k; va_list ap; char *str;
 
-	va_start(ap, format);
 	i = 0;
-	while (format[i] != '\0')
+	while (format[i] != '\0' && format)
 	{
-		k = 1;
-		switch (format[i++])
+		va_start(ap, format);
+		while (format[i])
 		{
-		case 'c':
-			printf("%c", va_arg(ap, int));
-			break;
-		case 'i':
-			printf("%i", va_arg(ap, int));
-			break;
-		case 'e':
-			printf("%f", va_arg(ap, double));
-			break;
-		case 's':
-			str = va_arg(ap, char*);
-			if (str == NULL)
+			k = 1;
+			switch (format[i++])
 			{
-				printf("(nil)");
+			case 'c':
+				printf("%c", va_arg(ap, int));
+				break;
+			case 'i':
+				printf("%i", va_arg(ap, int));
+				break;
+			case 'f':
+				printf("%f", va_arg(ap, double));
+				break;
+			case 's':
+				str = va_arg(ap, char*);
+				if (str == NULL)
+				{
+					printf("(nil)");
+					break;
+				}
+				else
+				{
+					printf("%s", str);
+					break;
+				}
+			default:
+				k = 0;
 				break;
 			}
-			else
-			{
-				printf("%s", str);
-				break;
-			}
-		default:
-			k = 0;
-			break;
+			if (format[i] != '\0' && k == 1)
+				printf(", ");
 		}
-		if (format[i + 1] != '\0' && k == 1)
-			printf(", ");
+		va_end(ap);
 	}
-	va_end(ap);
 	printf("\n");
 }
