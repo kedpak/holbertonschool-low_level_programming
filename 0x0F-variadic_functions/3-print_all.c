@@ -1,52 +1,88 @@
 #include "variadic_functions.h"
 
 /**
+ * p_char - print characters
+ * @ch: input char
+ * Return: void
+ */
+void p_char(va_list ch)
+{
+	printf("%c", va_arg(ch, int));
+}
+
+/**
+ * p_num - print number
+ * @num: input number
+ * Return: void
+ */
+void p_num(va_list num)
+{
+	printf("%d", va_arg(num, int));
+}
+
+/**
+ * p_float - print float
+ * @fl: input float
+ * Return: void
+ */
+void p_float(va_list fl)
+{
+	printf("%f", va_arg(fl, double));
+}
+
+/**
+ * p_string - print string
+ * @str: input string
+ * Return: void
+ */
+void p_string(va_list str)
+{
+	char *string;
+
+	string = va_arg(str, char *);
+	if (string == NULL)
+	{
+		printf("(nil)");
+	}
+	printf("%s", string);
+}
+
+/**
  * print_all - print out integer, float, char, or string
  * @format: format string of input
  * Return: void
  */
 void print_all(const char * const format, ...)
 {
-	int i, k; va_list ap; char *str;
-
+	int i, k;
+	va_list ap;
+	char *separator;
+	form_t data_types[] = {
+		{"c", p_char},
+		{"f", p_float},
+		{"i", p_num},
+		{"s", p_string},
+		{NULL, NULL}
+	};
+	va_start(ap, format);
 	i = 0;
-	while (format[i] && format)
+	separator = "";
+	while (format[i] != '\0' && format)
 	{
-		va_start(ap, format);
-		while (format[i])
+		k = 0;
+		while (data_types[k].type != NULL)
 		{
-			k = 1;
-			switch (format[i++])
+			if (data_types[k].type[0] == format[i])
 			{
-			case 'c':
-				printf("%c", va_arg(ap, int));
-				break;
-			case 'i':
-				printf("%d", va_arg(ap, int));
-				break;
-			case 'f':
-				printf("%f", va_arg(ap, double));
-				break;
-			case 's':
-				str = va_arg(ap, char*);
-				if (str == NULL)
-				{
-					printf("(nil)");
-					break;
-				}
-				else
-				{
-					printf("%s", str);
-					break;
-				}
-			default:
-				k = 0;
-				break;
+				printf("%s", separator);
+				data_types[k].func(ap);
+				separator = ", ";
 			}
-			if (format[i] && k)
-				printf(", ");
+			k++;
+
 		}
-		va_end(ap);
+		i++;
 	}
 	printf("\n");
+	va_end(ap);
 }
