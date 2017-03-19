@@ -43,6 +43,7 @@ void p_string(va_list str)
 	if (string == NULL)
 	{
 		printf("(nil)");
+		return;
 	}
 	printf("%s", string);
 }
