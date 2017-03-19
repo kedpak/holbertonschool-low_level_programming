@@ -10,7 +10,7 @@ void print_all(const char * const format, ...)
 	int i, k; va_list ap; char *str;
 
 	i = 0;
-	while (format[i] != '\0' && format != NULL)
+	while (format[i] && format)
 	{
 		va_start(ap, format);
 		while (format[i])
@@ -22,7 +22,7 @@ void print_all(const char * const format, ...)
 				printf("%c", va_arg(ap, int));
 				break;
 			case 'i':
-				printf("%i", va_arg(ap, int));
+				printf("%d", va_arg(ap, int));
 				break;
 			case 'f':
 				printf("%f", va_arg(ap, double));
@@ -43,7 +43,7 @@ void print_all(const char * const format, ...)
 				k = 0;
 				break;
 			}
-			if (format[i] != '\0' && k == 1)
+			if (format[i] && k)
 				printf(", ");
 		}
 		va_end(ap);
