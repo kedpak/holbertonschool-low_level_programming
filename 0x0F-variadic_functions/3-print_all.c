@@ -43,6 +43,7 @@ void p_string(va_list str)
 	if (string == NULL)
 	{
 		printf("(nil)");
+		return;
 	}
 	printf("%s", string);
 
@@ -60,8 +61,8 @@ void print_all(const char * const format, ...)
 	char *separator;
 	form_t data_types[] = {
 		{"c", p_char},
-		{"f", p_float},
 		{"i", p_num},
+		{"f", p_float},
 		{"s", p_string},
 		{NULL, NULL}
 	};
