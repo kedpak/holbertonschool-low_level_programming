@@ -6,12 +6,12 @@
 /**
  * struct print_type - struct of char and pointer function
  * form_t - type of struct
- * @type: input char
+ * @type: input char pointer
  * @func: input function
  */
 typedef struct print_type
 {
-	char type;
+	char *type;
 	void (*func)();
 } form_t;
 int _putchar(char c);

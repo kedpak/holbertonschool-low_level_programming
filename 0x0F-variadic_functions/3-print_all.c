@@ -5,9 +5,9 @@
  * @ch: input char
  * Return: void
  */
-void p_char(va_list ch)
+void p_char(va_list ap)
 {
-	printf("%c", va_arg(ch, int));
+	printf("%c", va_arg(ap, int));
 }
 
 /**
@@ -15,9 +15,9 @@ void p_char(va_list ch)
  * @num: input number
  * Return: void
  */
-void p_num(va_list num)
+void p_num(va_list ap)
 {
-	printf("%d", va_arg(num, int));
+	printf("%d", va_arg(ap, int));
 }
 
 /**
@@ -25,9 +25,9 @@ void p_num(va_list num)
  * @fl: input float
  * Return: void
  */
-void p_float(va_list fl)
+void p_float(va_list ap)
 {
-	printf("%f", va_arg(fl, double));
+	printf("%f", va_arg(ap, double));
 }
 
 /**
@@ -35,11 +35,11 @@ void p_float(va_list fl)
  * @str: input string
  * Return: void
  */
-void p_string(va_list str)
+void p_string(va_list ap)
 {
 	char *string;
 
-	string = va_arg(str, char *);
+	string = va_arg(ap, char *);
 	if (string == NULL)
 	{
 		printf("(nil)");
@@ -59,23 +59,23 @@ void print_all(const char * const format, ...)
 	int i, k;
 	char *separator;
 	form_t data_types[] = {
-		{'c', p_char},
-		{'i', p_num},
-		{'f', p_float},
-		{'s', p_string},
-		{'\0', NULL}
+		{"c", p_char},
+		{"i", p_num},
+		{"f", p_float},
+		{"s", p_string},
+		{NULL, NULL}
 	};
 	va_list ap;
 
 	va_start(ap, format);
 	i = 0;
 	separator = "";
-	while (format[i] != '\0' && format)
+	while (format && format[i] != '\0')
 	{
 		k = 0;
-		while (data_types[k].type != '\0')
+		while (data_types[k].type != NULL)
 		{
-			if ((data_types + k)->type == format[i])
+			if ((data_types + k)->type[0] == format[i])
 			{
 				printf("%s", separator);
 				data_types[k].func(ap);
