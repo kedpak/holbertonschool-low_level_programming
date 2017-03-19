@@ -2,7 +2,7 @@
 
 /**
  * p_char - print characters
- * @ch: input char
+ * @ap: input char
  * Return: void
  */
 void p_char(va_list ap)
@@ -12,7 +12,7 @@ void p_char(va_list ap)
 
 /**
  * p_num - print number
- * @num: input number
+ * @ap: input number
  * Return: void
  */
 void p_num(va_list ap)
@@ -22,7 +22,7 @@ void p_num(va_list ap)
 
 /**
  * p_float - print float
- * @fl: input float
+ * @ap: input float
  * Return: void
  */
 void p_float(va_list ap)
@@ -32,7 +32,7 @@ void p_float(va_list ap)
 
 /**
  * p_string - print string
- * @str: input string
+ * @ap: input string
  * Return: void
  */
 void p_string(va_list ap)
