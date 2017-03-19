@@ -44,10 +44,8 @@ void p_string(va_list str)
 	{
 		printf("(nil)");
 	}
-	else
-	{
-		printf("%s", string);
-	}
+	printf("%s", string);
+
 }
 
 /**
