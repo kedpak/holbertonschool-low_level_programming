@@ -42,7 +42,8 @@ void p_string(va_list str)
 	string = va_arg(str, char *);
 	if (string == NULL)
 	{
-		string = "(nil)";
+		printf("(nil)");
+		return;
 	}
 	printf("%s", string);
 
@@ -56,24 +57,25 @@ void p_string(va_list str)
 void print_all(const char * const format, ...)
 {
 	int i, k;
-	va_list ap;
 	char *separator;
 	form_t data_types[] = {
-		{"c", p_char},
-		{"i", p_num},
-		{"f", p_float},
-		{"s", p_string},
-		{NULL, NULL}
+		{'c', p_char},
+		{'i', p_num},
+		{'f', p_float},
+		{'s', p_string},
+		{'\0', NULL}
 	};
+	va_list ap;
+
 	va_start(ap, format);
 	i = 0;
 	separator = "";
 	while (format[i] != '\0' && format)
 	{
 		k = 0;
-		while (data_types[k].type != NULL)
+		while (data_types[k].type != '\0')
 		{
-			if ((data_types + k)->type[0] == format[i])
+			if ((data_types + k)->type == format[i])
 			{
 				printf("%s", separator);
 				data_types[k].func(ap);
@@ -83,6 +85,6 @@ void print_all(const char * const format, ...)
 		}
 		i++;
 	}
-	printf("\n");
 	va_end(ap);
+	printf("\n");
 }
