@@ -43,9 +43,11 @@ void p_string(va_list str)
 	if (string == NULL)
 	{
 		printf("(nil)");
-		return;
 	}
-	printf("%s", string);
+	else
+	{
+		printf("%s", string);
+	}
 }
 
 /**
@@ -68,7 +70,7 @@ void print_all(const char * const format, ...)
 	va_start(ap, format);
 	i = 0;
 	separator = "";
-	while (format[i] != '\0' && format)
+	while (format[i] != '\0' && format != NULL)
 	{
 		k = 0;
 		while (data_types[k].type != NULL)
@@ -80,7 +82,6 @@ void print_all(const char * const format, ...)
 				separator = ", ";
 			}
 			k++;
-
 		}
 		i++;
 	}
