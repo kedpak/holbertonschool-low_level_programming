@@ -42,8 +42,7 @@ void p_string(va_list str)
 	string = va_arg(str, char *);
 	if (string == NULL)
 	{
-		printf("(nil)");
-		return;
+		string = "(nil)";
 	}
 	printf("%s", string);
 
@@ -74,7 +73,7 @@ void print_all(const char * const format, ...)
 		k = 0;
 		while (data_types[k].type != NULL)
 		{
-			if (data_types[k].type[0] == format[i])
+			if ((data_types + k)->type[0] == format[i])
 			{
 				printf("%s", separator);
 				data_types[k].func(ap);
