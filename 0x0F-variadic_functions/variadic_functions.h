@@ -3,11 +3,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+/**
+ * struct print_type - struct of char and pointer function
+ * form_t - type of struct
+ * @type: input char
+ * @func: input function
+ */
 typedef struct print_type
 {
-	char *type;
+	char type;
 	void (*func)();
-}form_t;
+} form_t;
 int _putchar(char c);
 int sum_them_all(const unsigned int n, ...);
 void print_numbers(const char *separator, const unsigned int n, ...);
