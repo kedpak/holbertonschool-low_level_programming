@@ -31,19 +31,19 @@ list_t *add_node_end(list_t **head, const char *str)
 	const char *temp = str;
 
 	struct list_s *new_node = (list_t *)malloc(sizeof(struct list_s));
-	struct list_s *head_node = (list_t *)malloc(sizeof(struct list_s));
+	struct list_s *head_node;
+
 
 	head_node = *head;
 	new_node->str = strdup(temp);
 	new_node->len = _strlen(temp);
 	new_node->next = NULL;
 
-
 	if (*head == NULL)
 	{
 		*head = new_node;
-
 	}
+
 	else
 	{
 		while (head_node->next != NULL)
