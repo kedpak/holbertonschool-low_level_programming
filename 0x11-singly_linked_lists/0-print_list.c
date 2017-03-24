@@ -12,11 +12,6 @@ size_t print_list(const list_t *h)
 {
 	size_t i = 0;
 
-	if (h == NULL)
-	{
-		return (NULL);
-	}
-
 	while (h != NULL)
 	{
 		i++;
