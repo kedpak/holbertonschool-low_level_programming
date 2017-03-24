@@ -20,10 +20,10 @@ size_t print_list(const list_t *h)
 	while (h != NULL)
 	{
 		i++;
-		printf("[%d]", h->len);
+		printf("[%d] ", h->len);
 		printf("%s\n", h->str);
 		h = h->next;
 	}
 
-	return (h);
+	return (i);
 }
