@@ -29,11 +29,15 @@ list_t *add_node_end(list_t **head, const char *str)
 {
 
 	const char *temp = str;
-	struct list_s *new_node;
-	struct list_s *head_node;
+	list_t *new_node;
+	list_t *head_node;
 
+	if (str == NULL)
+	{
+		return (NULL);
+	}
 	head_node = *head;
-	new_node = (list_t *)malloc(sizeof(struct list_s));
+	new_node = (list_t *)malloc(sizeof(list_t));
 	if (new_node == NULL)
 	{
 		return (NULL);
@@ -41,6 +45,7 @@ list_t *add_node_end(list_t **head, const char *str)
 	new_node->str = strdup(temp);
 	if (new_node->str == NULL)
 	{
+		free(new_node);
 		return (NULL);
 	}
 	new_node->len = _strlen(temp);
@@ -49,7 +54,7 @@ list_t *add_node_end(list_t **head, const char *str)
 	if (*head == NULL)
 	{
 		*head = new_node;
-		return (NULL);
+		return (new_node);
 	}
 	else
 	{
