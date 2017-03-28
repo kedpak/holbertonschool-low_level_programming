@@ -1,5 +1,10 @@
 #include "lists.h"
 
+/**
+ * sum_listint - add sum of data for all nodes
+ * @head: head node
+ * Return: sum
+ */
 int sum_listint(listint_t *head)
 {
 	unsigned int i;
@@ -17,5 +22,4 @@ int sum_listint(listint_t *head)
 		temp = temp->next;
 	}
 	return (i);
-	
 }
