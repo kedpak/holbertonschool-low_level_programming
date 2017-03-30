@@ -33,29 +33,30 @@ unsigned int binary_to_uint(const char *b)
 
 	max = 1;
 
-	if (b == NULL)
-	{
-		return (0);
-	}
+
 	for (i = 1; i < len; i++)
 	{
 		max *= 2;
 	}
-	for (i = 0; i < len ; i++)
+	if (b != NULL)
 	{
-		if (b[i] != '1' && b[i] != '0')
+		for (i = 0; i < len ; i++)
 		{
-			return (0);
+			if (b[i] != '1' && b[i] != '0')
+			{
+				return (0);
+			}
+			if (b[i] == '1')
+			{
+				total += max;
+			}
+			if (b[i] == '0')
+			{
+				;
+			}
+			max /= 2;
 		}
-		if (b[i] == '1')
-		{
-			total += max;
-		}
-		if (b[i] == '0')
-		{
-			;
-		}
-		max /= 2;
+		return (total);
 	}
-	return (total);
+	return (0);
 }
