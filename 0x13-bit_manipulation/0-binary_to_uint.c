@@ -26,6 +26,10 @@ unsigned int binary_to_uint(const char *b)
 {
 	unsigned int i, len, max, total;
 
+	if (b == NULL)
+	{
+		return (0);
+	}
 	len = _strlen(b);
 	total = 0;
 
