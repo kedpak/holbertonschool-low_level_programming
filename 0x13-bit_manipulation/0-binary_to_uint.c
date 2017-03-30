@@ -1,6 +1,4 @@
 #include "holberton.h"
-#include <stdlib.h>
-#include <stddef.h>
 
 /**
  * _strlen - return length of string
@@ -33,7 +31,6 @@ unsigned int binary_to_uint(const char *b)
 
 	max = 1;
 
-
 	for (i = 1; i < len; i++)
 	{
 		max *= 2;
@@ -49,10 +46,6 @@ unsigned int binary_to_uint(const char *b)
 			if (b[i] == '1')
 			{
 				total += max;
-			}
-			if (b[i] == '0')
-			{
-				;
 			}
 			max /= 2;
 		}
