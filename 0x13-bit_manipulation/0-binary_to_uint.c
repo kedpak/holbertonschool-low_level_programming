@@ -32,13 +32,13 @@ unsigned int binary_to_uint(const char *b)
 	}
 	len = _strlen(b);
 	total = 0;
-
 	max = 1;
 
 	for (i = 1; i < len; i++)
 	{
 		max *= 2;
 	}
+
 
 	for (i = 0; i < len; i++)
 	{
@@ -50,9 +50,7 @@ unsigned int binary_to_uint(const char *b)
 		{
 			total += max;
 		}
-		max /= 2;
+		max = max >> 1;
 	}
 	return (total);
-
-
 }
