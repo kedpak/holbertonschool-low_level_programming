@@ -24,7 +24,8 @@ int _strlen(const char *s)
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int i, len, max, total;
+	unsigned int i, len, total;
+	unsigned long int max;
 
 	if (b == NULL)
 	{
@@ -34,12 +35,10 @@ unsigned int binary_to_uint(const char *b)
 	total = 0;
 	max = 1;
 
-	for (i = 1; i < len; i++)
+	for (i = 0; i < len; i++)
 	{
 		max *= 2;
 	}
-
-
 	for (i = 0; i < len; i++)
 	{
 		if (b[i] != '1' && b[i] != '0')
@@ -50,7 +49,7 @@ unsigned int binary_to_uint(const char *b)
 		{
 			total += max;
 		}
-		max = max >> 1;
+		max /= 2;
 	}
 	return (total);
 }
