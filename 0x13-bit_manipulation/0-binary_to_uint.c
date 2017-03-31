@@ -35,7 +35,7 @@ unsigned int binary_to_uint(const char *b)
 	total = 0;
 	max = 1;
 
-	for (i = 0; i < len; i++)
+	for (i = 1; i < len; i++)
 	{
 		max *= 2;
 	}
