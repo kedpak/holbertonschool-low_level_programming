@@ -11,6 +11,10 @@ void print_binary(unsigned long int n)
 
 	k = n;
 
+	if (n == NULL)
+	{
+		return (NULL);
+	}
 	if (n == 0)
 	{
 		_putchar('0');
