@@ -24,20 +24,19 @@ int _strlen(char *s)
 int create_file(const char *filename, char *text_content)
 {
 	int fd, len, w, closer;
-	mode_t mode = S_IWUSR | S_IRUSR;
 
 	if (filename == NULL)
 	{
 		return (-1);
 	}
-	fd = open(filename, O_CREAT | O_WRONLY | O_TRUNC, mode);
+	fd = open(filename, O_CREAT | O_TRUNC | O_WRONLY, 0600);
 	if (fd == -1)
 	{
 		return (-1);
 	}
-	len = _strlen(text_content);
 	if (text_content != NULL)
 	{
+		len = _strlen(text_content);
 		w = write(fd, text_content, len);
 	}
 	if (w == -1)
