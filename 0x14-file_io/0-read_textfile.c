@@ -21,8 +21,16 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	}
 
 	r = read(fd, buf, letters);
+	if (r == -1)
+	{
+		return (0);
+	}
 	written = write(STDOUT_FILENO, buf, r);
-	
+	if (written = -1)
+	{
+		return (0);
+	}
+
 	close(fd);
 	if (closer == -1)
 	{
