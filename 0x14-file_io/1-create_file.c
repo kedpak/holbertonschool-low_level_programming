@@ -35,15 +35,13 @@ int create_file(const char *filename, char *text_content)
 	{
 		return (-1);
 	}
-	len = _strlen(text_content);
-
 	if (text_content == NULL)
 	{
 		return (-1);
 	}
-
+	len = _strlen(text_content);
 	w = write(fd, text_content, len);
-	if (w == -1 || w != len)
+	if (w == -1)
 	{
 		return (-1);
 	}
