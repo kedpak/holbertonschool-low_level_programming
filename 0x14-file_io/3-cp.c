@@ -40,22 +40,20 @@ int main(int argc, char *argv[])
 	int f_from, f_to, file1, file2, close_to, close_from;
 
 	if (argc != 3)
-	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"); exit(97);
-	}
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
+
 	file1 = open(argv[1], O_RDONLY);
 	if (file1 == -1)
+	{
 		read_error(argv[1]);
-
+	}
 	file2 = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
 	if (file2 == -1)
 		write_error(argv[2]);
 
 	f_from = read(file1, buf, sizeof(buf));
 	if (f_from == -1)
-	{
 		read_error(argv[1]);
-	}
 	while (f_from > 0)
 	{
 		f_to = write(file2, buf, f_from);
@@ -71,10 +69,10 @@ int main(int argc, char *argv[])
 	}
 	close_from = close(file1);
 	if (close_from == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", f_from); exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", f_from), exit(100);
 	close_to = close(file2);
 	if (close_to == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", f_to); exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", f_to), exit(100);
 	return (0);
 }
 
