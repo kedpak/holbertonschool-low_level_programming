@@ -13,33 +13,47 @@
  */
 int main(int argc, char *argv[])
 {
-	int src, dest, k, m;
 	char buf[1024];
+	int f_from, f_to, file1, file2;
 
-	src = open(argv[1], O_RDONLY | O_TRUNC);
-	dest = open(argv[2], O_WRONLY, 664);
+	file1 = open(argv[1], O_RDONLY);
+	file2 = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
 
-	k = read(src, buf, 1024);
-	m = write(dest, buf, k);
 	if (argc != 3)
 	{
 		printf("Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	if (src == -1)
+	f_from = read(file1, buf, 1024);
+	if (f_from == -1)
 	{
-		printf("Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file NAME_OF_THE_FILE");
 		exit(98);
 	}
-	if (dest == -1)
+	while (f_from > 0)
 	{
-		printf("Error: Can't write to %s\n", argv[1]);
+		f_to = write(file2, buf, f_from);
+		if (f_from == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to NAME_OF_THE_FILE");
+			exit(99);
+		}
+		if (f_to == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to NAME_OF_THE_FILE");
+			exit(99);
+		}
+		f_from = read(f_from, buf, 1024);
+	}
+	if (close(f_from) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd FD_VALUE");
 		exit(100);
 	}
-	if (k != m)
+	if (close(f_to) == -1)
 	{
-		printf("Error: Can't close fd FD_VALUE\n");
+		dprintf(STDERR_FILENO, "Error: Can't close fd FD_VALUE");
 		exit(100);
 	}
-	return (0);
+	return (1);
 }
