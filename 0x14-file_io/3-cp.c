@@ -58,6 +58,10 @@ int main(int argc, char *argv[])
 			write_error(argv[2]);
 		}
 		f_from = read(f_from, buf, 1024);
+		if (f_from == -1)
+		{
+			read_error(argv[2]);
+		}
 	}
 	if (close(f_from) == -1)
 	{
