@@ -1,0 +1,1 @@
+Bitwise operaters! Will finish readme soon!
