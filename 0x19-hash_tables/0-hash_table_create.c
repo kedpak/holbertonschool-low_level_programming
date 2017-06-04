@@ -12,7 +12,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 
 	hash_table = NULL;
 
-	if (size < 1)
+	if (size == 0)
 	{
 		return (NULL);
 	}
