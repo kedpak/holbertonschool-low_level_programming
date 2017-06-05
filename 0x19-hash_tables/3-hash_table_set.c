@@ -35,7 +35,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		}
 		/* this is where all the value sets go */
 		new_node = set_values(key, value);
-		new_node->next = ht->array[index];
+		new_node->next = new_node;
 		ht->array[index] = new_node;
 		if (new_node->key == NULL || new_node->value == NULL)
 		{
@@ -62,7 +62,7 @@ hash_node_t *set_values(const char *key, const char *value)
 {
 	hash_node_t *new_node;
 
-	new_node = malloc(sizeof(hash_node_t *));
+	new_node = malloc(sizeof(hash_node_t));
 	new_node->key = strdup(key);
 	if (new_node->key == NULL)
 	{
