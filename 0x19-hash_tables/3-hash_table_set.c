@@ -14,7 +14,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (ht == NULL || key == NULL || value == NULL || ht->array == NULL)
 	{
-		free(ht);
 		return (0);
 	}
 
