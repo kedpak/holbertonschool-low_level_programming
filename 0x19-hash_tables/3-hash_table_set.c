@@ -29,12 +29,14 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (ht->array[index] != NULL)
 	{
 		_add_node(&head, key, value);
-		return (1);
 	}
-	ht->array[index] = head;
-	head->key = (char *)key;
-	head->value = (char *)value;
-	head->next = NULL;
+	else
+	{
+		ht->array[index] = head;
+		head->key = (char *)key;
+		head->value = (char *)value;
+		head->next = NULL;
+	}
 
 	return (1);
 }
