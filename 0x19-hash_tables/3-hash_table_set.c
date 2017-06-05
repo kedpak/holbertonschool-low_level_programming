@@ -9,7 +9,8 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *new_node, *temp; unsigned long int index;
+	hash_node_t *new_node;
+	unsigned long int index;
 
 	if (ht == NULL || ht->array == NULL || ht->size == 0 || key == NULL)
 		return (0);
@@ -17,10 +18,9 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	/* grabs index of array to implement element */
 	index = key_index((unsigned const char*)key, ht->size);
-	new_node = ht->array[index];
-	temp = ht->array[index];
+	ht->array[index] = NULL;
 	/* beginning of linked list at specified index */
-	if (new_node == NULL)
+	if (ht->array[index] == NULL)
 	{
 		new_node = set_values(key, value);  /* malloc space for new node */
 		if (new_node == NULL)
@@ -30,17 +30,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	/* if collision occurs this else statement will execute */
 	else
 	{
-		/* checks if there is a duplicate key by looping through the temp node */
-		while (temp != NULL)
-		{
-			/* if matching key, then override the previous value with new value */
-			if (temp && temp->key && strcmp(temp->key, key) == 0)
-			{
-				free(temp->value);
-				temp->value = strdup(value); return (1);
-			}
-			temp = temp->next;
-		}
 		/* sets up new_node at beginning of list */
 		new_node = set_values(key, value);
 		if (new_node == NULL)
