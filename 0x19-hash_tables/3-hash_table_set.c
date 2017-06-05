@@ -29,7 +29,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	}
 	else
 	{
-		while (temp == NULL)
+		while (temp != NULL)
 		{
 			if (temp && temp->key && strcmp(key, strdup(temp->key)) == 0)
 			{
@@ -37,6 +37,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 				temp->value = strdup(value);
 				return (1);
 			}
+			temp = temp->next;
 		}
 		new_node = set_values(key, value);
 		new_node->next = new_node;
