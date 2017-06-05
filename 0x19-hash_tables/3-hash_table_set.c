@@ -34,7 +34,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		while (temp != NULL)
 		{
 			/* if matching key, then override the previous value with new value */
-			if (temp && temp->key && strcmp(key, strdup(temp->key)) == 0)
+			if (temp && temp->key && strcmp(temp->key, key) == 0)
 			{
 				free(temp->value);
 				temp->value = strdup(value); return (1);
@@ -56,7 +56,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
  * set_values - creates new node and sets the key and values of the node
  * @key: key to be placed into node
  * @value: value of key
- * function mallocs space for new node of linked list and sets values of node
  * Return: returns the new node
  */
 hash_node_t *set_values(const char *key, const char *value)
