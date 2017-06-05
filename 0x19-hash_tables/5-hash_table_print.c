@@ -12,6 +12,10 @@ void hash_table_print(const hash_table_t *ht)
 
 	i = 0;
 	counter = 0;
+	if (ht == NULL)
+	{
+		return;
+	}
 	/*loop checks which last index has key pair value */
 	while (i < ht->size)
 	{
