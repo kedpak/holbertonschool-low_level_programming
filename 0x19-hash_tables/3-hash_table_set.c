@@ -19,10 +19,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	index = key_index((unsigned const char*)key, ht->size);
 	head = malloc(sizeof(hash_node_t *));
-	new_node = malloc(sizeof(hash_node_t *));
 
-	if (ht->array[index] != NULL)
+	if (ht->array[index] == head)
 	{
+		new_node = malloc(sizeof(hash_node_t *));
 		new_node->key = (char *)key;
 		new_node->value = (char *)value;
 		new_node->next = head;
