@@ -19,10 +19,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	index = key_index((unsigned const char*)key, ht->size);
 
-	ht->array[index] = NULL;
+	new_node = NULL;
 	temp = ht->array[index];
-	new_node = ht->array[index];
-	if (ht->array[index] != NULL)
+	ht->array[index] = new_node;
+
+	if (ht->array[index] == new_node)
 	{
 		while (temp != NULL)
 		{
