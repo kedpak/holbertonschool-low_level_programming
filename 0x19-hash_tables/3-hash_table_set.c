@@ -19,36 +19,36 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	index = key_index((unsigned const char*)key, ht->size);
 
-	temp = ht->array[index];
 	new_node = ht->array[index];
+	temp = ht->array[index];
 	ht->array[index] = NULL;
-	if (ht->array[index] != NULL)
+	if (ht->array[index] == NULL)
 	{
-		while (temp != NULL)
-		{
-			if (new_node && new_node->key != NULL && strcmp(key, strdup(new_node->key)) == 0)
-			{
-				free(new_node->value);
-				new_node->value = strdup(value);
-				return (1);
-			}
-		}
-		/* this is where all the value sets go */
 		new_node = set_values(key, value);
-		new_node->next = new_node;
 		ht->array[index] = new_node;
 	}
 	else
 	{
+		while (temp == NULL)
+		{
+			if (temp && temp->key && strcmp(key, strdup(temp->key)) == 0)
+			{
+				free(temp->value);
+				temp->value = strdup(value);
+				return (1);
+			}
+		}
 		new_node = set_values(key, value);
+		new_node->next = new_node;
 		ht->array[index] = new_node;
+
 	}
 	return (1);
 }
 
 
 /**
- * set_values - sets the key and values of the node
+ * set_values - creates new node and sets the key and values of the node
  * @key: key to be placed into node
  * @value: value of key
  * Return: returns the new node
