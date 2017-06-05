@@ -15,19 +15,19 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	if (value == 0 || strlen(key) == 0)
 		return (0);
-	/* grabs index of array with key_index function */
+	/* grabs index of array to implement element */
 	index = key_index((unsigned const char*)key, ht->size);
-	/* assigns new node and temp to struct at array[index] */
 	new_node = ht->array[index];
 	temp = ht->array[index];
 	/* beginning of linked list at specified index */
-	if (new_node != NULL)
+	if (new_node == NULL)
 	{
 		new_node = set_values(key, value);  /* malloc space for new node */
 		if (new_node == NULL)
 			return (0);
 		ht->array[index] = new_node;
 	}
+	/* if collision occurs this else statement will execute */
 	else
 	{
 		/* checks if there is a duplicate key by looping through the temp node */
@@ -41,7 +41,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			}
 			temp = temp->next;
 		}
-		/* sets the new node of the list and place at beginning of list */
+		/* sets up new_node at beginning of list */
 		new_node = set_values(key, value);
 		if (new_node == NULL)
 			return (0);
