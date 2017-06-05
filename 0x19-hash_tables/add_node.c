@@ -7,7 +7,7 @@
  * @value: value of key
  * Return: new node
  */
-hash_node_t *_add_node(hash_node_t *head, const char *key, const char *value)
+hash_node_t *_add_node(hash_node_t **head, const char *key, const char *value)
 {
 	hash_node_t *new_node;
 
@@ -20,9 +20,10 @@ hash_node_t *_add_node(hash_node_t *head, const char *key, const char *value)
 	}
 	new_node->key = (char *)key;
 	new_node->value = (char *)value;
+	new_node->next = *head;
 	if (head != NULL)
 	{
-		head = new_node;
+		*head = new_node;
 	}
 	return (new_node);
 }
