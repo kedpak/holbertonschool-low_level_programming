@@ -17,12 +17,14 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (value == NULL || strlen(key) == 0)
 		return (0);
 	/* grabs index of array to implement element */
-	index = key_index((unsigned char *)key, ht->size);
+	index = key_index((const unsigned char *)key, ht->size);
 	temp = ht->array[index];
 	new_node = ht->array[index];
 	/* check if key already exists inside linked list */
 	if (new_node != NULL)
 	{
+		if (temp->key == NULL)
+			return (0);
 		while (temp != NULL)
 		{
 			if (temp->key != NULL && strcmp(key, temp->key) == 0)
@@ -31,12 +33,10 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 				temp->value = strdup(value);
 				return (1);
 			}
-			if (temp->key == NULL)
-			{
-				return (0);
-			}
 			temp = temp->next;
 		}
+		new_node->next = ht->array[index];
+		ht->array[index] = new_node;
 	}
 	/* if collision does not occurs this else statement will execute */
 	else
@@ -45,7 +45,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		/* sets up new_node at beginning of list */
 		if (new_node == NULL)
 			return (0);
-		new_node->next = ht->array[index];
 		ht->array[index] = new_node;
 	}
 	return (1);
