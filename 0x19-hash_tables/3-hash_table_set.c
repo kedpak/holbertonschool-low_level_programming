@@ -9,7 +9,7 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *new_node;
+	hash_node_t *new_node, *temp;
 	unsigned long int index;
 
 	if (ht == NULL || ht->array == NULL || ht->size == 0 || key == NULL)
@@ -17,24 +17,32 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (value == 0 || strlen(key) == 0)
 		return (0);
 	/* grabs index of array to implement element */
-	index = key_index((unsigned const char*)key, ht->size);
-	ht->array[index] = NULL;
-	/* beginning of linked list at specified index */
-	if (ht->array[index] == NULL)
+	index = key_index((unsigned char *)key, ht->size);
+	temp = ht->array[index];
+	new_node = ht->array[index];
+	/* check if key already exists inside linked list */
+	if (new_node != NULL)
 	{
-		new_node = set_values(key, value);  /* malloc space for new node */
-		if (new_node == NULL)
-			return (0);
-		ht->array[index] = new_node;
+		while (temp != NULL)
+		{
+			if (temp && temp->key && strcmp(key, temp->key) == 0)
+			{
+				free(temp->value);
+				temp->value = strdup(value);
+				return (1);
+			}
+			temp = temp->next;
+		}
 	}
 	/* if collision occurs this else statement will execute */
 	else
 	{
-		/* sets up new_node at beginning of list */
 		new_node = set_values(key, value);
+		/* sets up new_node at beginning of list */
+
 		if (new_node == NULL)
 			return (0);
-		new_node->next = new_node;
+		new_node->next = ht->array[index];
 		ht->array[index] = new_node;
 	}
 	return (1);
