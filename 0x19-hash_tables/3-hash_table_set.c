@@ -14,7 +14,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (ht == NULL || ht->array == NULL || ht->size == 0 || key == NULL)
 		return (0);
-	if (value == 0 || strlen(key) == 0)
+	if (value == NULL || strlen(key) == 0)
 		return (0);
 	/* grabs index of array to implement element */
 	index = key_index((unsigned char *)key, ht->size);
@@ -25,11 +25,15 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	{
 		while (temp != NULL)
 		{
-			if (temp && temp->key && strcmp(key, temp->key) == 0)
+			if (temp->key != NULL && strcmp(key, temp->key) == 0)
 			{
 				free(temp->value);
 				temp->value = strdup(value);
 				return (1);
+			}
+			if (temp->key == NULL)
+			{
+				return (0);
 			}
 			temp = temp->next;
 		}
