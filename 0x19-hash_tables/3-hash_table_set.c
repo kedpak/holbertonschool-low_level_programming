@@ -35,6 +35,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			}
 			temp = temp->next;
 		}
+		new_node = set_values(key, value);
 		new_node->next = ht->array[index];
 		ht->array[index] = new_node;
 	}
