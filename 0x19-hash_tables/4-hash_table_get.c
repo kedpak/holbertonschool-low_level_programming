@@ -28,9 +28,13 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 		return (NULL);
 	}
 
-	while (strcmp(key, k_pair->key) > 0)
+	while (k_pair != NULL)
 	{
+		if (strcmp(key, k_pair->key) == 0)
+		{
+			return (k_pair->value);
+		}
 		k_pair = k_pair->next;
 	}
-	return (k_pair->value);
+	return (NULL);
 }
