@@ -34,12 +34,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			temp = temp->next;
 		}
 	}
-	/* if collision occurs this else statement will execute */
+	/* if collision does not occurs this else statement will execute */
 	else
 	{
 		new_node = set_values(key, value);
 		/* sets up new_node at beginning of list */
-
 		if (new_node == NULL)
 			return (0);
 		new_node->next = ht->array[index];
@@ -75,8 +74,8 @@ hash_node_t *set_values(const char *key, const char *value)
 	/* if value is NULL, then free all previous malloced values */
 	if (new_node->value == NULL)
 	{
-		free(new_node);
 		free(new_node->key);
+		free(new_node);
 		return (NULL);
 	}
 	new_node->next = NULL;
