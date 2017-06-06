@@ -27,7 +27,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 		return (NULL);
 	}
 
-	while (strcmp(strdup(key), k_pair->key) > 0)
+	while (strcmp(key, k_pair->key) > 0)
 	{
 		k_pair = k_pair->next;
 	}
