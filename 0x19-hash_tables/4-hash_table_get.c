@@ -19,7 +19,7 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	index = key_index((const unsigned char *)key, ht->size);
 	k_pair = ht->array[index];
 
-	if (k_pair == NULL || k_pair->value == NULL)
+	if (k_pair == NULL || ht->array[index] == NULL)
 	{
 		return (NULL);
 	}
