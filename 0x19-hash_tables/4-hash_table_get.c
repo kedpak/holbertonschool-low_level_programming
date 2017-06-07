@@ -9,7 +9,7 @@
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
 	hash_node_t *k_pair;
-	unsigned long int index;
+	unsigned long int index, i;
 
 	if (ht == NULL || key == NULL)
 	{
@@ -27,14 +27,21 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	{
 		return (NULL);
 	}
-
-	while (strcmp(key, k_pair->key) > 0)
+	i = 0;
+	while (i < ht->size)
 	{
-		k_pair = k_pair->next;
-		if (strcmp(key, k_pair->key) == 0)
+		if (i == index)
 		{
-			return (k_pair->value);
+			while (strcmp(key, k_pair->key) > 0)
+			{
+				if (strcmp(key, k_pair->key) == 0)
+				{
+					return (k_pair->value);
+				}
+				k_pair = k_pair->next;
+			}
 		}
+		i++;
 	}
 	return (k_pair->value);
 }
