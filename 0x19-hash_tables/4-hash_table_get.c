@@ -31,6 +31,10 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	while (strcmp(key, k_pair->key) > 0)
 	{
 		k_pair = k_pair->next;
+		if (strcmp(key, k_pair->key) == 0)
+		{
+			return (k_pair->value);
+		}
 	}
 	return (k_pair->value);
 }
