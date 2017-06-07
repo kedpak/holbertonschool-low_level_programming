@@ -13,9 +13,7 @@ void hash_table_print(const hash_table_t *ht)
 	i = 0;
 	counter = 0;
 	if (ht == NULL)
-	{
 		return;
-	}
 	/*loop checks which last index has key pair value */
 	while (i < ht->size)
 	{
@@ -25,7 +23,6 @@ void hash_table_print(const hash_table_t *ht)
 		}
 		i++;
 	}
-
 	i = 0; /* set i back to zero for print loop */
 	printf("{");
 	while (i < ht->size)
@@ -33,14 +30,18 @@ void hash_table_print(const hash_table_t *ht)
 		/* set node to index of array hash table */
 		node = ht->array[i];
 		/* print key values */
-		if (ht->array[i] != NULL && i != counter)
+		while (node != NULL)
 		{
-			printf("'%s': '%s', ", node->key, node->value);
-		}
+			if (ht->array[i] != NULL && i != counter)
+			{
+				printf("'%s': '%s', ", node->key, node->value);
+			}
 		/* if index is last index with a key value print this */
-		if (ht->array[i] != NULL && i == counter)
-		{
+			if (ht->array[i] != NULL && i == counter)
+			{
 			printf("'%s': '%s'}", node->key, node->value);
+			}
+			node = node->next;
 		}
 		i++;
 	}
