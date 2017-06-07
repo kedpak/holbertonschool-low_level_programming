@@ -23,13 +23,10 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	{
 		return (NULL);
 	}
-	if (strcmp(strdup(key), k_pair->key) != 0)
-	{
-		return (NULL);
-	}
 	i = 0;
 	while (i < ht->size)
 	{
+		k_pair = ht->array[index];
 		while (k_pair != NULL)
 		{
 			if (strcmp(key, k_pair->key) == 0)
