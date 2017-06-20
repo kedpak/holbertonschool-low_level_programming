@@ -9,21 +9,17 @@
 void bubble_sort(int *array, size_t size)
 {
 
-	if (!array)
-	{
-		return;
-	}
-
-	if (size <= 1)
-	{
-		return;
-	}
-
 	size_t i, j;
         int temp;
 
-	i = 0;
+        i = 0;
         j = 0;
+
+	if (!array || size <= 1)
+	{
+		return;
+	}
+
 	while (j < size - 1)
 	{
 		i = 0;
