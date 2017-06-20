@@ -9,6 +9,7 @@
  *
  * @n: Integer stored in the node
  * @next: Pointer to the next element of the list
+ * @prev: pointer for prev
  */
 typedef struct listint_s
 {
