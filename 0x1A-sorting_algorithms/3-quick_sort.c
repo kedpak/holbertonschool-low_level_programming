@@ -24,21 +24,28 @@ int partition(int *array, int start, int end, size_t size)
 
 		if (array[i] <= pivot)
 		{
-			temp = array[i];
-			array[i] = array[p_index];
-			array[p_index] = temp;
+			/* second if checks if p_index does not equal start */
+			if (array[p_index] != array[i])
+			{
+				temp = array[i];
+				array[i] = array[p_index];
+				array[p_index] = temp;
+				print_array(array, size);
+			}
 			p_index++;
 		}
 
 	}
 	/* swaps the end index(pivot) with p_index */
+
 	if (array[p_index] != array[end])
 	{
 		temp2 = array[p_index];
 		array[p_index] = array[end];
 		array[end] = temp2;
+		print_array(array, size);
 	}
-	print_array(array, size);
+
 	return (p_index);
 
 }
@@ -79,8 +86,6 @@ void quick_sort(int *array, size_t size)
 	{
 		return;
 	}
-
-	
 	start = 0;
 	_quick(array, start, size - 1, size);
 }
