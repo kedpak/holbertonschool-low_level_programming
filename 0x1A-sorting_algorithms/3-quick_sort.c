@@ -37,9 +37,7 @@ int partition(int *array, int start, int end, size_t size)
 		temp2 = array[p_index];
 		array[p_index] = array[end];
 		array[end] = temp2;
-
 	}
-
 	print_array(array, size);
 	return (p_index);
 
@@ -75,11 +73,14 @@ void _quick(int *array, int start, int end, size_t size)
  */
 void quick_sort(int *array, size_t size)
 {
+	int start;
+
 	if (array == NULL || size <= 1)
 	{
 		return;
 	}
-	size_t start = 0;
 
+	
+	start = 0;
 	_quick(array, start, size - 1, size);
 }
