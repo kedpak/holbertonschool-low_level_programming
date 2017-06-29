@@ -1,0 +1,20 @@
+# makefile
+
+
+CC = gcc
+SRC = main.c holberton.c
+OBJ = $(SRC:.c=.o)
+NAME = holberton
+
+.PHONY: clean oclean fclean re
+
+all: $(OBJ) m.h
+	$(CC) -Wall -Werror -Wextra -pedantic $(OBJ) -o $(NAME)
+clean:
+	rm -f *~ $(NAME)
+oclean:
+	rm -f $(OBJ)
+
+fclean: clean oclean
+
+re: oclean all
