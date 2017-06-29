@@ -11,9 +11,9 @@ NAME = holberton
 all: $(OBJ) m.h
 	$(CC) -Wall -Werror -Wextra -pedantic $(OBJ) -o $(NAME)
 clean:
-	rm -f *~ $(NAME)
+	$(RM) *~ $(NAME)
 oclean:
-	rm -f $(OBJ)
+	$(RM) $(OBJ)
 
 fclean: clean oclean
 
