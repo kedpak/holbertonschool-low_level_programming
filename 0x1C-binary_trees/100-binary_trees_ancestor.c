@@ -6,30 +6,32 @@
  * @second: second node to be checked
  * Return: node of common ancestry
  */
-binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tree_t *second)
+binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
+				     const binary_tree_t *second)
 {
 
+	const binary_tree_t *temp1, *temp2;
 
-	if (first == second->parent)
+
+	if (first == NULL || second == NULL)
 	{
-		return ((binary_tree_t *)first);
+		return (NULL);
 	}
-	if (second == first->parent)
+	temp1 = first;
+	temp2 = second;
+
+	while (temp1 != NULL)
 	{
-		return ((binary_tree_t *)second);
-	}
-	while (first != NULL)
-	{
-		first = first->parent;
-		while (second != NULL)
+		temp1 = temp1->parent;
+		while (temp2 != NULL)
 		{
-			second = second->parent;
-			if (first == second)
+			if (temp1 == temp2)
 			{
 				return ((binary_tree_t *)first);
 			}
-		}
 
+			temp2 = temp2->parent;
+		}
 	}
 	return (NULL);
 }
