@@ -13,7 +13,7 @@ void counting_sort(int *array, size_t size)
 	int max = find_max(array);
 	int *count_array = malloc(sizeof(int) * max);
 
-	/* loop determines the size of counting array */
+	/* loop sets count_array and increments value by 1 for element */
 	for (i = 0; i < size; i++)
 	{
 		for (j = 0; j <= max; j++)
@@ -44,6 +44,7 @@ void counting_sort(int *array, size_t size)
 			}
 		}
 	}
+	free(count_array);
 
 }
 
