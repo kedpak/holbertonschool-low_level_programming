@@ -1,93 +1,58 @@
 #include  "sort.h"
 
+/**
+ * counting_sort - sorts an array of integers using counting algorithm
+ * @array: array to be sorted
+ * @size: size of array to be sorted
+ * Return: void function
+ */
 void counting_sort(int *array, size_t size)
 {
-	int k, count, count_num;
-	int array2[100]; /*array with elements from min to max */
-	int count_array[100];
-	unsigned int i, m;
-	int flag;
+	unsigned int i, p;
+	int j;
+	int max = find_max(array);
+	int *count_array = malloc(sizeof(int) * max);
 
-	/* loop assigns each element of array from min to max */
-
-	for (i = 0; i <= 100; i++)
+	/* loop determines the size of counting array */
+	for (i = 0; i < size; i++)
 	{
-		array2[i] = 0;
-		printf("array2: %d\n", array2[i]);
+		for (j = 0; j <= max; j++)
+		{
+			if (array[i] == j)
+				count_array[j] += 1;
+		}
 	}
 
-	k = 0;
-	for (m = 0; m <= 10; m++)
+	/* adds up right index accumaltively */
+	p = 0;
+	for (j = 0; j <= max; j++)
 	{
-		printf("array ele: %d\n", array[m]);
-		k = 0;
-		while (k < 100)
+		count_array[j + 1] += count_array[j];
+		if (j < max)
+			printf("%d, ", count_array[j]);
+		else
 		{
-			if (array[m] == k)
+			printf("%d\n", count_array[j]);
+		}
+		for (i = p; i < size; i++)
+		{
+			if (count_array[j] > count_array[j - 1])
 			{
-				array2[k] += 1;
+				array[i] = j;
+				p += 1;
+				break;
 			}
-			k++;
 		}
-
 	}
 
-	count = 0;
-	count_num = 0;
-	flag = 0;
-	for (m = 1; m <= 100; m++)
-	{
-		if (flag == 1)
-		{
-			count++;
-		}
-		flag = 0;
-		count_num += array2[m];
-		count_array[m] = array2[m] + count_num;
-		printf("count array: %d\n", count_array[m]);
-		if (count_array[m] != count_num )
-		{
-			continue;
-			flag = 1;
-		}
-		printf("countss: %d ,", count);
-	}
-
-	printf("%d\n", count_array[0]);
-	
-	
-
-	for (k = 0; k <= 100; k++)
-	{
-		printf("element: %d   count: %d\n", k, array2[k]);
-	}
-
-
-	printf("size: %lu\n", size);
 }
 
 
-int find_min(int *array)
-{
-	unsigned int i;
-	int min;
-
-	min = array[0];
-	for (i = 0; i <= sizeof(array); i++)
-        {
-		if (array[i + 1] == '\0')
-			break;
-                if (min > array[i + 1])
-                {
-			min = array[i + 1];
-                        i = 0;
-                }
-        }
-	printf("min: %d\n", min);
-	return (min);
-}
-
-
+/**
+ * find_max - finds the max integer of an array
+ * @array: array to find the max integer in
+ * Return: integer that is highest in array
+ */
 int find_max(int *array)
 {
 	unsigned int i;
@@ -95,12 +60,12 @@ int find_max(int *array)
 
 	max = array[0];
 	for (i = 0; i <= sizeof(array); i++)
-        {
+	{
 		if (array[i + 1] == '\0')
 			break;
-                if (max < array[i + 1])
-                {
-                        max = array[i + 1];
+		if (max < array[i + 1])
+		{
+			max = array[i + 1];
 		}
 	}
 
