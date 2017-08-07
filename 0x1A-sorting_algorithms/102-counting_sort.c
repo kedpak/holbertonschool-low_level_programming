@@ -8,12 +8,15 @@
  */
 void counting_sort(int *array, size_t size)
 {
-	unsigned int i, p;
-	int j;
-	int max = find_max(array);
-	int *count_array = malloc(sizeof(int) * max);
+	size_t m;
+	unsigned int i;
+	int j, k, max;
+	int *count_array, *final_array;
 
 	/* loop sets count_array and increments value by 1 for element */
+	max = find_max(array, size);
+	count_array = malloc(sizeof(int) * max);
+	final_array = malloc(sizeof(int) * size);
 	for (i = 0; i < size; i++)
 	{
 		for (j = 0; j <= max; j++)
@@ -22,30 +25,29 @@ void counting_sort(int *array, size_t size)
 				count_array[j] += 1;
 		}
 	}
-
-	/* adds up right index accumaltively */
-	p = 0;
+	/* adds up right index accumulatively */
+	for (k = 0; k <= max; k++)
+	{
+		count_array[k + 1] += count_array[k];
+		if (k < max)
+			printf("%d, ", count_array[k]);
+		else
+			printf("%d\n", count_array[k]);
+	}
+	m = 0;
 	for (j = 0; j <= max; j++)
 	{
-		count_array[j + 1] += count_array[j];
-		if (j < max)
-			printf("%d, ", count_array[j]);
-		else
+		if (count_array[j] > count_array[j - 1])
 		{
-			printf("%d\n", count_array[j]);
-		}
-		for (i = p; i < size; i++)
-		{
-			if (count_array[j] > count_array[j - 1])
-			{
-				array[i] = j;
-				p += 1;
+			final_array[m] = j;
+			m++;
+			if (m > size)
 				break;
-			}
 		}
 	}
+	for (m = 0; m < size; m++)
+		array[m] = final_array[m];
 	free(count_array);
-
 }
 
 
@@ -54,19 +56,21 @@ void counting_sort(int *array, size_t size)
  * @array: array to find the max integer in
  * Return: integer that is highest in array
  */
-int find_max(int *array)
+int find_max(int *array, size_t size)
 {
-	unsigned int i;
+	size_t i;
 	int max;
 
-	max = array[0];
-	for (i = 0; i <= sizeof(array); i++)
+	if (!array || size == 0)
 	{
-		if (array[i + 1] == '\0')
-			break;
-		if (max < array[i + 1])
+		return (0);
+	}
+	max = array[0];
+	for (i = 1; i < size; i++)
+	{
+		if (array[i] > max)
 		{
-			max = array[i + 1];
+			max = array[i];
 		}
 	}
 
