@@ -31,7 +31,7 @@ int partition(int *array, int start, int end, size_t size);
 void _quick(int *array, int start, int end, size_t size);
 void cocktail_sort_list(listint_t **list);
 void counting_sort(int *array, size_t size);
-int find_min(int *array);
-int find_max(int *array);
+int find_max(int *array, size_t size);
+void free_array(int *array, size_t size);
 
 #endif /* SORT_H */

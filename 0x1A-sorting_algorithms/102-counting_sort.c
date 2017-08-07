@@ -54,6 +54,7 @@ void counting_sort(int *array, size_t size)
 /**
  * find_max - finds the max integer of an array
  * @array: array to find the max integer in
+ * @size: size of array
  * Return: integer that is highest in array
  */
 int find_max(int *array, size_t size)
