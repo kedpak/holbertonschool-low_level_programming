@@ -23,14 +23,13 @@ int binary_search(int *array, size_t size, int value)
 	{
 		return (array[first]);
 	}
-	print_array(first, size);
+	print_array(array, first, size);
 	while (first <= last)
 	{
-		middle = (last + first) / 2;
 		if (array[middle] < value)
 		{
 			first = middle + 1;
-			print_array(first, last + 1);
+			print_array(array, first, last + 1);
 		}
 		else if (array[middle] == value)
 		{
@@ -39,8 +38,9 @@ int binary_search(int *array, size_t size, int value)
 		else
 		{
 			last = middle;
-			print_array(first, last + 1);
+			print_array(array, first, last + 1);
 		}
+		middle = (last + first) / 2;
 	}
 	return (-1);
 }
@@ -49,9 +49,10 @@ int binary_search(int *array, size_t size, int value)
  * print_array - prints the array from current to last
  * @num: index where array will start at
  * @size: size of array
+ * @array: array to iterate and print elements of
  * Return: void
  */
-void print_array(size_t num, size_t size)
+void print_array(int *array, size_t num, size_t size)
 {
 
 	int flag;
@@ -66,7 +67,7 @@ void print_array(size_t num, size_t size)
 				printf("Searching in array: ");
 				flag = 1;
 			}
-			printf("%lu, ", num);
+			printf("%d, ", array[num]);
 		}
 		else
 		{
@@ -75,7 +76,7 @@ void print_array(size_t num, size_t size)
 				printf("Searching in array: ");
 				flag = 1;
 			}
-			printf("%lu\n", num);
+			printf("%d\n", array[num]);
 		}
 	}
 
