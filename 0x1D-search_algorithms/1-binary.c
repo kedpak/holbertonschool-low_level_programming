@@ -9,7 +9,7 @@
  */
 int binary_search(int *array, size_t size, int value)
 {
-	size_t i, j, middle, last;
+	size_t i, middle, last;
 
 	last = size - 1;
 	middle = last / 2;
@@ -27,15 +27,14 @@ int binary_search(int *array, size_t size, int value)
 			i = middle + 1;
 			print_array(i, last + 1);
 		}
+		else if (array[middle] == value)
+		{
+			return (middle);
+		}
 		else
 		{
 			last = middle;
 			print_array(i, last + 1);
-			for (j = 0; j < middle; j++)
-			{
-				if (array[j] == value)
-					return (j);
-			}
 		}
 		if (array[i] == value)
 			return (i);
