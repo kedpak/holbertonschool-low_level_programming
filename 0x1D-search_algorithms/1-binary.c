@@ -52,12 +52,30 @@ int binary_search(int *array, size_t size, int value)
  */
 void print_array(size_t num, size_t size)
 {
-	printf("Searching in array: ");
+
+	int flag;
+
+	flag = 0;
 	for (num = num; num < size; num++)
 	{
 		if (num < size - 1)
+		{
+			if (flag == 0)
+			{
+				printf("Searching in array: ");
+				flag = 1;
+			}
 			printf("%lu, ", num);
+		}
 		else
+		{
+			if (flag == 0)
+			{
+				printf("Searching in array: ");
+				flag = 1;
+			}
 			printf("%lu\n", num);
+		}
 	}
+
 }
