@@ -19,6 +19,10 @@ int binary_search(int *array, size_t size, int value)
 		return (-1);
 	}
 	i = 0;
+	if (last == 1)
+	{
+		return (array[i]);
+	}
 	print_array(i, size);
 	while (i <= last)
 	{
