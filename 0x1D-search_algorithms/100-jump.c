@@ -1,5 +1,5 @@
 #include "search_algos.h"
-
+#include <errno.h>
 /**
  * jump_search - searches for a value in sorted array with jump search.
  * @array: pointer to the first element of the array.
@@ -20,7 +20,7 @@ int jump_search(int *array, size_t size, int value)
 	{
 		j = jump - floor(sqrt(size));
 		max = jump;
-		if (array[jump] == value || jump > size - 1 || array[jump] > value)
+		if (jump > size - 1 || array[jump] > value || array[jump] == value)
 		{
 			printf("Value found between indexes [%lu] and [%lu]\n", j, max);
 			break;
